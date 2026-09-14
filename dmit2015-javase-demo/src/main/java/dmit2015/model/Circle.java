@@ -21,10 +21,14 @@ public class Circle {
     }
 
     public static void main(String[] args) {
-        Circle currentCircle = new Circle();
 
+        Circle currentCircle = new Circle();
         currentCircle.setRadius(3);
-        System.out.printf("Radius: %.2f, Area = %.2f\n", currentCircle.getRadius(), currentCircle.Area());
+
+        System.out.printf(
+                "Radius: %.2f, Area = %.2f\n",
+                currentCircle.getRadius(),
+                currentCircle.Area());
 
 //        System.out.println("sdfjks", "sdafsdf");
     }
