@@ -7,8 +7,9 @@ import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
-//
+// links the code with the xhtml page
 @Named
+// gives the lifetime of the JAVA Object on the page ... This gives 1 life jajaj
 @RequestScoped
 
 public class HelloBean {
@@ -28,8 +29,8 @@ public class HelloBean {
     }
 
     public String onSubmit() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("FacesMessage from Java part" + userInput));
-        userInput = null;
+        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("FacesMessage from Java part " + userInput));
+        // userInput = null;
         return null;
     }
 
