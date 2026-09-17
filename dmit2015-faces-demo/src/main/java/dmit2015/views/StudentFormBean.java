@@ -10,12 +10,13 @@ import java.io.Serializable; //Jakarta face card, this lets the program know we 
 @Named
 @ViewScoped // This would give a life for the JAVA Object for the page lifetime
 
+// implements Serializable is required for the ViewScope
 public class StudentFormBean implements Serializable {
 
     private int submissionCount = 0;
     private String fullName;
     private String program;
-    private Boolean fullTime;
+    private boolean fullTime;
 
 
     public int getSubmissionCount() {
@@ -38,19 +39,20 @@ public class StudentFormBean implements Serializable {
         this.program = program;
     }
 
-    public Boolean getFullTime() {
+    public boolean isFullTime() {
         return fullTime;
     }
 
-    public void setFullTime(Boolean fullTime) {
+    public void setFullTime(boolean fullTime) {
         this.fullTime = fullTime;
     }
-
 
     public void onSubmit() {
         submissionCount++;
 
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Form Submitted: ", String.format("Welcome %s to %s program (%s)", fullName, program, fullTime ? "Full time" : "Part Time"));
+        FacesMessage message = new FacesMessage(
+                FacesMessage.SEVERITY_INFO, "Form Submitted: ",
+                String.format("Welcome %s to %s program (%s)", fullName, program, fullTime ? "Full time" : "Part Time"));
 
         FacesContext.getCurrentInstance().addMessage(null, message);
 
