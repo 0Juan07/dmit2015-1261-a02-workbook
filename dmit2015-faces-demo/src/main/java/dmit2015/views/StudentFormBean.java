@@ -1,5 +1,6 @@
 package dmit2015.views;
 
+import dmit2015.model.StudentInfo;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
@@ -14,37 +15,19 @@ import java.io.Serializable; //Jakarta face card, this lets the program know we 
 public class StudentFormBean implements Serializable {
 
     private int submissionCount = 0;
-    private String fullName;
-    private String program;
-    private boolean fullTime;
-
 
     public int getSubmissionCount() {
         return submissionCount;
     }
 
-    public String getFullName() {
-        return fullName;
+    private StudentInfo studentInfo = new StudentInfo();
+
+    public StudentInfo getStudentInfo() {
+        return studentInfo;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getProgram() {
-        return program;
-    }
-
-    public void setProgram(String program) {
-        this.program = program;
-    }
-
-    public boolean isFullTime() {
-        return fullTime;
-    }
-
-    public void setFullTime(boolean fullTime) {
-        this.fullTime = fullTime;
+    public void setStudentInfo(StudentInfo studentInfo) {
+        this.studentInfo = studentInfo;
     }
 
     public void onSubmit() {
@@ -52,13 +35,12 @@ public class StudentFormBean implements Serializable {
 
         FacesMessage message = new FacesMessage(
                 FacesMessage.SEVERITY_INFO, "Form Submitted: ",
-                String.format("Welcome %s to %s program (%s)", fullName, program, fullTime ? "Full time" : "Part Time"));
+                String.format("Welcome %s to %s program (%s)", studentInfo.getFullName(), studentInfo.getProgram(), studentInfo.isFullTime() ? "Full time" : "Part Time"));
 
         FacesContext.getCurrentInstance().addMessage(null, message);
 
-        fullName = null;
-        program = null;
-        fullTime = true;
+        studentInfo = new StudentInfo();
+
     }
 
 }
