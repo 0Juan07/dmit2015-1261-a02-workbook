@@ -21,10 +21,7 @@ public class CourseRegistrationBean implements Serializable {
                 onlineDelivery ? "Online" : "In-Person";
 
         FacesMessage message = new FacesMessage(
-                FacesMessage.SEVERITY_INFO,
-                "Registration Submitted",
-                studentName + " registered for "
-                        + courseName + " (" + deliveryMode + ")");
+                FacesMessage.SEVERITY_INFO, "", String.format("%s something %s (%s)", this.studentName, courseName, onlineDelivery ? "Online":"Not Online"));
 
         FacesContext.getCurrentInstance()
                 .addMessage(null, message);
