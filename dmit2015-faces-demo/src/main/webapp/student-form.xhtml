@@ -52,7 +52,7 @@
 
 
 
-        <p:dataTable id="studentsDataTable" value="#{studentListSession.students}" var="currentStudent">
+        <p:dataTable id="studentsDataTable" value="#{studentListSession.stud    ents}" var="currentStudent">
 
             <p:column headerText="Full Name">
                 <h:outputText value="#{currentStudent.fullName}"/>
@@ -64,6 +64,10 @@
 
             <p:column headerText="Full Time">
                 <h:selectBooleanCheckbox value="#{currentStudent.fullTime}" disabled="true"/>
+            </p:column>
+
+            <p:column headerText="Action">
+                <p:commandButton value="Remove" action="#{studentListSession.remove(currentStudent)}" update="studentsDataTable" process="@this"/>
             </p:column>
 
         </p:dataTable>
